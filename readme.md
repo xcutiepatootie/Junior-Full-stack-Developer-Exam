@@ -23,10 +23,10 @@ This is web-application is an exam for the position of Junior Full-stack Develop
 3. Mobile Responsive website and used vanilla css by implementing it by modules.
 4. Showing Toast for error handling and handled basic form validation on the frontend by passing required into the html `<input />` tag
 
-## Bonus Tasks I did
+## Bonus Tasks
 
-1. I implemented a JWT-based authentication using **pyjwt**. It handles the making a JWT-token and decoding it.
-2. Testing.
+1. I implemented a JWT-based authentication using **pyjwt**. It handles the making a JWT-token and decoding it. - [ ]
+2. ~~Unit Testing~~.
 3. I deployed my Frontend in **vercel** and my backend to **heroku**.
 
 ## Installation
@@ -79,4 +79,4 @@ This is web-application is an exam for the position of Junior Full-stack Develop
 ## Discussion
 
 - For the discussion of Backend, see the [Backend README](./backend/readme.md)
-- For the discussion of Frontend, see the [Backend README](./frontend/readme.md)
+- For the discussion of Frontend, see the [Frontend README](./frontend/readme.md)
