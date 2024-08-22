@@ -15,7 +15,8 @@
 .navbar-items {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-evenly;
+  gap: 20px;
 }
 
 .icon {
@@ -71,8 +72,9 @@
 .link {
   color: white;
   text-decoration: none;
+  text-wrap: nowrap;
   font-weight: bold;
-  padding: 10px 20px;
+  padding: 8px 10px;
   border: 2px solid white;
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -90,5 +92,6 @@
 @media (max-width: 768px) {
   .navbar-items {
     width: 100%;
+    justify-content: flex-end;
   }
 }
