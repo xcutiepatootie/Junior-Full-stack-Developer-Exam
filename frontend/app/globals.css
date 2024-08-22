@@ -16,45 +16,74 @@ body {
 
 .grid-container {
   display: grid;
-  gap: 16px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
 
 .grid-item {
   background-color: #e6e2e2;
   padding: 16px;
-  max-height: 50vh;
+  max-height: 80vh;
   border-radius: 8px;
   text-align: center;
-  overflow-y: auto;
+  overflow-y: auto; /* Added for better handling of overflow */
 }
 
-.table-card {
+.flex-item {
+  padding: 4px;
+  height: auto;
+  width: auto;
+  border-radius: 8px;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+  .grid-item {
+    width: 100%;
+    height: 80%;
+  }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .grid-item {
+    width: 100%;
+  }
+}
+
+.table-card,
+.auth-card {
   height: 4rem;
-  width: 100vw;
-  border: red solid 1px;
+  width: 100%; /* Adjusted from 100vw */
+  border: 1px solid red;
 }
 
 .auth-card {
-  height: 4rem;
-  width: 100vw;
-  border: blue solid 1px;
+  border-color: blue;
 }
 
-/* Webkit Browsers */
 .grid-item::-webkit-scrollbar {
-  width: 4px; /* Width of the scrollbar */
+  width: 4px;
 }
 
 .grid-item::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Track color */
+  background: #f1f1f1;
 }
 
 .grid-item::-webkit-scrollbar-thumb {
-  background: #b3b2b2; /* Thumb color */
-  border-radius: 10px; /* Rounded corners */
+  background: #b3b2b2;
+  border-radius: 10px;
 }
 
 .grid-item::-webkit-scrollbar-thumb:hover {
-  background: #727272; /* Thumb color on hover */
+  background: #727272;
 }
