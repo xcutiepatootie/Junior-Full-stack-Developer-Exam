@@ -18,10 +18,10 @@ const AuthForm = ({ itemId }) => {
     } else {
       register({ name, username, email, password });
     }
-   /*  setName("");
+    setName("");
     setUserame("");
     setEmail("");
-    setPassword(""); */
+    setPassword("");
   };
 
   const toggleMode = () => {

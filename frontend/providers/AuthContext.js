@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }) => {
       console.log(data);
       const messageType = Object.keys(data);
       console.log(messageType);
-      showToast(data[`${messageType[0]}`], messageType[0]);
+      showToast(messageType[0] === "success" ? "Successfully Logged In" : data[`${messageType[0]}`], messageType[0]);
       if (data.access_token) {
         Cookies.set("access_token", data.access_token, { expires: 1 });
 

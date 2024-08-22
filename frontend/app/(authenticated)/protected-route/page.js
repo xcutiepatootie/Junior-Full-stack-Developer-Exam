@@ -9,7 +9,7 @@ const formatDate = (timestamp) => {
 
 export default async function page() {
   const accessToken = cookies().get("access_token");
-  const userInfo = await fetch("http://localhost:5000/auth/decode-token", {
+  const userInfo = await fetch(`${process.env.NEXT_PUBLIC_URL}auth/decode-token`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
