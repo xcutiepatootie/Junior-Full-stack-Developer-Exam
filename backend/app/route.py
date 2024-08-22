@@ -7,7 +7,7 @@ bp = Blueprint("main", __name__)
 
 @bp.route("/")
 def hello_world():
-    return "<h1>Hello World!!!</h1>"
+    return "<h1>Hello World!!!</h1><br/><h1>This is a REST api endpoint for my Junior Full-stack developer techincal examination.<h1>"
 
 
 @bp.route("/api/items", methods=["GET"])
