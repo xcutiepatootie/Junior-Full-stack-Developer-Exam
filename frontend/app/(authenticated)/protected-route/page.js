@@ -25,7 +25,7 @@ export default async function page() {
       <div className={styles.card}>
         <h1>Protected Route</h1>
         <h2>
-          The user can't access this page if the user doesn't have an
+          The user can&apos;t access this page if the user doesn&apos;t have an
           access_token (JWT) in their cookies
         </h2>
         <br />
