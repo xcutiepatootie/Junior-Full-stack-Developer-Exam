@@ -97,3 +97,20 @@
     transform: rotate(360deg);
   }
 }
+
+.item-form::-webkit-scrollbar {
+  width: 4px;
+}
+
+.item-form::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.item-form::-webkit-scrollbar-thumb {
+  background: #b3b2b2;
+  border-radius: 10px;
+}
+
+.item-form::-webkit-scrollbar-thumb:hover {
+  background: #727272;
+}

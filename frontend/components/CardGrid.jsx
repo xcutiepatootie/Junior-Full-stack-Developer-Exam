@@ -11,6 +11,10 @@ const CardGrid = () => {
   const { items, error, loading } = useFetchItems();
   const isMobile = useMobileView();
 
+  const handleCardClick = (itemId) => {
+    router.push(`/item/${itemId}`);
+  };
+
   if (loading) return <h2>Loading...</h2>;
   if (error) return <h2>Something went wrong: {error.message}</h2>;
   return (
@@ -28,7 +32,11 @@ const CardGrid = () => {
 
       <div className={styles["card-container"]}>
         {items.map((item) => (
-          <div key={item.id} className={styles.card}>
+          <div
+            key={item.id}
+            className={styles.card}
+            onClick={isMobile ? () => handleCardClick(item.id) : undefined}
+          >
             <Avatar
               name={`${item.name}`}
               colors={["#fb6900", "#f63700", "#004853", "#007e80", "#00b9bd"]}
