@@ -29,15 +29,7 @@ body {
   overflow-y: auto; /* Added for better handling of overflow */
 }
 
-.flex-item {
-  padding: 4px;
-  height: auto;
-  width: auto;
-  border-radius: 8px;
-  text-align: center;
-}
-
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   .grid-container {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -45,12 +37,12 @@ body {
   }
   .grid-item {
     width: 100%;
-    height: 80%;
+    height: 100%;
   }
 }
 
 /* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
+@media (min-width: 767px) and (max-width: 1120px) {
   .grid-container {
     grid-template-columns: 1fr;
     gap: 12px;
