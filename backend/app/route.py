@@ -212,7 +212,7 @@ def login_user():
             algorithm="HS256",
         )
 
-        return jsonify({"access_token": access_token}), 200
+        return jsonify({"success": access_token}), 200
     except sqlite3.Error as e:
         # Handle SQLite errors
         return jsonify({"error": f"Database error: {str(e)}"}), 500
