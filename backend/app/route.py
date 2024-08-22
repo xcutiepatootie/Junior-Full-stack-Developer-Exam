@@ -34,6 +34,16 @@ def add_item():
     name = new_item.get("name")
     description = new_item.get("description")
     price = new_item.get("price")
+
+    if not name:
+        return jsonify({"error": "Name is required"})
+
+    if not isinstance(price, (int, float)):
+        return jsonify({"error": "Price must be a number"})
+
+    if price <= 0:
+        return jsonify({"error": "Price must be greater than zero"})
+
     conn = connect_db()
     try:
         conn.execute(
@@ -42,7 +52,7 @@ def add_item():
         )
         conn.commit()
         conn.close()
-        return jsonify({"status": "Item Added"}), 201
+        return jsonify({"success": "Item Added"}), 201
     except sqlite3.IntegrityError:
         conn.close()
         return jsonify({"error": "Something went Wrong"})
@@ -54,6 +64,16 @@ def update_item(item_id):
     name = update_request.get("name")
     description = update_request.get("description")
     price = update_request.get("price")
+
+    if not name:
+        return jsonify({"error": "Name is required"})
+
+    if not isinstance(price, (int, float)):
+        return jsonify({"error": "Price must be a number"})
+
+    if price <= 0:
+        return jsonify({"error": "Price must be greater than zero"})
+
     conn = connect_db()
     cursor = conn.cursor()
     cursor.execute(
@@ -65,20 +85,18 @@ def update_item(item_id):
         conn.close()
         return jsonify({"error": "Item not found"}), 404
     conn.close()
-    return jsonify({"status": "Item Updated"})
+    return jsonify({"success": "Item Updated"})
 
 
 @bp.route("/api/items/<int:item_id>", methods=["DELETE"])
 def delete_item(item_id):
     conn = connect_db()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM items where id = ?", (item_id))
+    cursor.execute("DELETE FROM items where id = ?", (item_id,))
     conn.commit()
 
     if cursor.rowcount == 0:
         conn.close()
         return jsonify({"error": "Item not found"}), 404
 
-    return jsonify({"status": "Item Deleted"})
-
-
+    return jsonify({"success": "Item Deleted"})

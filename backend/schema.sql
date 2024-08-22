@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS items(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    description TEXT CHECK (length(description) <= 255),
+    description TEXT,
     price REAL CHECK (price > 0)
 )
