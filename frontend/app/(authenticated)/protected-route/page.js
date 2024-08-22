@@ -14,7 +14,7 @@ const formatDate = (timestamp) => {
     timeZoneName: "short",
   };
 
-  return new Intl.DateTimeFormat(navigator.language, options).format(date);
+  return date.toLocaleString(undefined, options);
 };
 export default async function page() {
   const accessToken = cookies().get("access_token");
