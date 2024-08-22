@@ -8,7 +8,6 @@ export default function create_item() {
       <div className={"flex-item"}>
         <ItemForm />
       </div>
-      
     </div>
   );
 }

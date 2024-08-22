@@ -10,10 +10,7 @@ const ItemForm = ({ itemId }) => {
   const [initialValue, setInitialValue] = useState(null);
   const router = useRouter();
   const { showToast } = useToast();
-  const { items, loading, error } = useFetchItems(
-    "http://localhost:5000/api/items",
-    itemId
-  );
+  const { items, loading, error } = useFetchItems(itemId);
 
   useEffect(() => {
     if (items) {
@@ -27,8 +24,8 @@ const ItemForm = ({ itemId }) => {
 
   const submitForm = async (formData) => {
     const url = itemId
-      ? `http://localhost:5000/api/items/${itemId}`
-      : "http://localhost:5000/api/items";
+      ? `${process.env.NEXT_PUBLIC_URL}api/items/${itemId}`
+      : `${process.env.NEXT_PUBLIC_URL}api/items`;
     const method = itemId ? "PUT" : "POST";
 
     console.log(JSON.stringify(formData));
@@ -56,7 +53,7 @@ const ItemForm = ({ itemId }) => {
   const handleDelete = async (itemId) => {
     if (!itemId) return;
     try {
-      const url = `http://localhost:5000/api/items/${itemId}`;
+      const url = `${process.env.NEXT_PUBLIC_URL}api/items/${itemId}`;
       const response = await fetch(url, {
         method: "DELETE",
       });

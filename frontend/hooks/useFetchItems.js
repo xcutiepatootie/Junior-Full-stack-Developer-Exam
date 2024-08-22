@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
-const useFetchItems = (url, itemId = null) => {
+const useFetchItems = (itemId = null) => {
+  const API_URL = process.env.NEXT_PUBLIC_URL;
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -8,9 +9,9 @@ const useFetchItems = (url, itemId = null) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let fetchUrl = url;
+        let fetchUrl = `${API_URL}api/items`;
         if (itemId) {
-          fetchUrl = `${url}/${itemId}`;
+          fetchUrl = `${API_URL}api/items/${itemId}`;
         }
         const response = await fetch(fetchUrl, { method: "GET" });
         if (!response.ok) {
@@ -26,7 +27,7 @@ const useFetchItems = (url, itemId = null) => {
     };
 
     fetchData();
-  }, [url, itemId]);
+  }, [itemId]);
 
   return { items, loading, error };
 };

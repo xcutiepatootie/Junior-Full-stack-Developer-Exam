@@ -6,9 +6,7 @@ import useMobileView from "@/hooks/useMobileView";
 
 const ItemsList = () => {
   const isMobile = useMobileView();
-  const { items, error, loading } = useFetchItems(
-    "http://localhost:5000/api/items"
-  );
+  const { items, error, loading } = useFetchItems();
   const router = useRouter();
 
   if (loading) return <h2>Loading...</h2>;
