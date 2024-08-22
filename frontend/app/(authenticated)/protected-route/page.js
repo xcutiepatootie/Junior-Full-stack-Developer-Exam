@@ -4,18 +4,30 @@ import { cookies } from "next/headers";
 
 const formatDate = (timestamp) => {
   const date = new Date(timestamp * 1000);
-  return date.toLocaleString();
-};
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    timeZoneName: "short",
+  };
 
+  return new Intl.DateTimeFormat(navigator.language, options).format(date);
+};
 export default async function page() {
   const accessToken = cookies().get("access_token");
-  const userInfo = await fetch(`${process.env.NEXT_PUBLIC_URL}auth/decode-token`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ value: accessToken.value }),
-  });
+  const userInfo = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}auth/decode-token`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ value: accessToken.value }),
+    }
+  );
 
   const data = await userInfo.json();
   const user = data["decoded-user"];
