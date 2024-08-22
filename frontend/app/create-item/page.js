@@ -1,17 +1,14 @@
-import React from "react";
+import ItemForm from "@/components/Forms/ItemForm";
+import styles from "../page.module.css";
 
 export default function create_item() {
   return (
-    <div>
-      Create New Item
-      <form>
-        <label>Item Name:</label>
-        <input />
-        <label>Item Description:</label>
-        <input />
-        <label>Item Price:</label>
-        <input />
-      </form>
+    <div className={styles.main}>
+      <h1 style={{ marginBottom: "1rem" }}>Create New Item</h1>
+      <div className={"flex-item"}>
+        <ItemForm />
+      </div>
+      
     </div>
   );
 }

@@ -1,8 +1,9 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import ItemForm from "@/components/Forms/ItemForm";
+import styles from "../../page.module.css";
 
-export default function Item({ params }) {
-  const [item, setItem] = useState(null);
+export default function page({ params }) {
+  console.log(params);
+  /*  const [item, setItem] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,19 +19,13 @@ export default function Item({ params }) {
     };
 
     fetchData();
-  }, [params.id]);
+  }, [params.id]); */
   return (
-    <div>
-      id:{params.id}
-      {item ? (
-        <>
-          {item.name}
-          {item.description}
-          {item.price}
-        </>
-      ) : (
-        <>No item found</>
-      )}
+    <div className={styles.main}>
+      <h1 style={{ marginBottom: "1rem" }}>Update Item</h1>
+      <div className={"flex-item"}>
+        <ItemForm itemId={params.id} />
+      </div>
     </div>
   );
 }
