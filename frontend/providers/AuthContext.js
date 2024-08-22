@@ -90,9 +90,14 @@ export const AuthProvider = ({ children }) => {
       console.log(data);
       const messageType = Object.keys(data);
       console.log(messageType);
-      showToast(messageType[0] === "success" ? "Successfully Logged In" : data[`${messageType[0]}`], messageType[0]);
-      if (data.access_token) {
-        Cookies.set("access_token", data.access_token, { expires: 1 });
+      showToast(
+        messageType[0] === "success"
+          ? "Successfully Logged In"
+          : data[`${messageType[0]}`],
+        messageType[0]
+      );
+      if (data.success) {
+        Cookies.set("access_token", data.success);
 
         const decodeResponse = await fetch(
           `${process.env.NEXT_PUBLIC_URL}auth/decode-token`,
@@ -101,7 +106,7 @@ export const AuthProvider = ({ children }) => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ value: data.access_token }),
+            body: JSON.stringify({ value: data.success }),
           }
         );
 
